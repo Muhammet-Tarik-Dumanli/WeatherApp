@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-clock',
   templateUrl: './clock.component.html',
-  styleUrl: './clock.component.css'
+  styleUrl: './clock.component.scss'
 })
 export class ClockComponent implements OnInit, OnDestroy{
   private _clockSubscription: any; //Subscription

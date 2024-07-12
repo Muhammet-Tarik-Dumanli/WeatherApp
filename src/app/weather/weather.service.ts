@@ -4,8 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { Subject } from 'rxjs';
 import { interval } from 'rxjs';
 import { switchMap, startWith, map, catchError } from 'rxjs/operators';
-import 'rxjs/Rx';
-import 'rxjs/add/operator/catch';
 
 import { AppService } from '../shared/services/app.service';
 import { LoaderService } from '../loader/loader.service';

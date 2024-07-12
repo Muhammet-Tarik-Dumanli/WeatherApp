@@ -6,7 +6,7 @@ import { apiConfig } from '../config';
 @Component({
   selector: 'app-city-card',
   templateUrl: './city-card.component.html',
-  styleUrl: './city-card.component.css'
+  styleUrl: './city-card.component.scss'
 })
 export class CityCardComponent implements OnInit {
 @Input() weather: any; //Weather

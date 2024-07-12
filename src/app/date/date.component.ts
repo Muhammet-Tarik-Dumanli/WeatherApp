@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-date',
   templateUrl: './date.component.html',
-  styleUrl: './date.component.css',
+  styleUrl: './date.component.scss',
 })
 export class DateComponent implements OnInit, OnDestroy {
   private _clockSubscription: any; //Subscription
