@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-not-found',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent {
+  city: string = '';
 
+  constructor(route: ActivatedRoute) {
+    route.queryParams.subscribe((params) => {
+      this.city = params['city'];
+    });
+  }
 }
