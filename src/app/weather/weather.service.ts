@@ -106,11 +106,10 @@ export class WeatherService {
     return interval(this.weatherUpdateInterval).pipe(
       startWith(0),
       switchMap(() =>
-        this.http.get(
+        this.http.get<any>(
           `${apiConfig.host}/weather?appid=${apiConfig.appId}&lat=${latitude}&lon=${longitude}&units=${this.unitSystem}`
         )
       ),
-      map((response: any) => response.json()),
       map((data: any) => {
         const weather = this.handleResponseWeatherData(data);
         this.weather.next(weather);
@@ -119,30 +118,30 @@ export class WeatherService {
       catchError(this.handleError)
     );
   }
-
+  
   getWeatherByCity(city: string): Observable<any> {
     return interval(this.weatherUpdateInterval).pipe(
       startWith(0),
       switchMap(() =>
-        this.http.get(
+        this.http.get<any>(
           `${apiConfig.host}/weather?appid=${apiConfig.appId}&q=${city}&units=${this.unitSystem}`
         )
       ),
-      map((response: any) => response.json()),
       map((data: any) => {
         const weather = this.handleResponseWeatherData(data);
         this.weather.next(weather);
         return weather;
       }),
-      catchError((error) => throwError(() => new Error(error.message || error)))
+      catchError(this.handleError)
     );
   }
+  
 
   private handleResponseWeatherData(responseData: any): Weather {
     const { name, main, weather, wind, sys, dt } = responseData;
-
+  
     this.currentWeatherTimestamp = dt;
-
+  
     const updateAt = new Date().getTime();
     const iconClassname = this.weatherIconsServie.getIconClassNameByCode(
       weather[0].id,
@@ -159,7 +158,7 @@ export class WeatherService {
     const windBeaufortScale = this.helperService.getWindBeaufortScaleByMeterInSecond(wind.speed);
     const sunriseTime = sys.sunrise * 1000;
     const sunsetTime = sys.sunset * 1000;
-
+  
     return new Weather(
       updateAt,
       name,
@@ -175,7 +174,7 @@ export class WeatherService {
       windBeaufortScale
     );
   }
-
+  
   private handleError(error: any): Observable<any> {
     return throwError(() => new Error(error.message || error));
   }

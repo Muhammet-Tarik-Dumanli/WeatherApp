@@ -16,6 +16,16 @@ import { WeatherComponent } from './weather/weather.component';
 import { ForecastItemComponent } from './forecast/forecast-item.component'; 
 import { FormsModule } from '@angular/forms';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import { AppService } from './shared/services/app.service';
+import { LocalstorageService } from './shared/services/localstorage.service';
+import { LoaderService } from './loader/loader.service';
+import { WeatherService } from './weather/weather.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HelperService } from './shared/services/helper.service';
+import { WeatherIconsService } from './shared/services/weather-icons/weather-icons.service';
+import { ClockService } from './clock/clock.service';
+import { DateService } from './date/date.service';
+import { ForecastService } from './forecast/forecast.service';
 
 @NgModule({
   declarations: [
@@ -36,9 +46,10 @@ import { UiSwitchModule } from 'ngx-ui-switch';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    UiSwitchModule
+    UiSwitchModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AppService, LocalstorageService, LoaderService, WeatherService, HelperService, WeatherIconsService, HttpClient, ClockService, DateService, ForecastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
