@@ -11,7 +11,7 @@ export class SearchBarComponent {
 
   constructor(private router: Router) {}
 
-  onClickClearBtn() {
+  onClickCleanBtn() {
     this.searchText = '';
   }
 

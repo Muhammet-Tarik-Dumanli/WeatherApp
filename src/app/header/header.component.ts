@@ -9,7 +9,7 @@ import { appConfig, apiConfig } from '../config';
 export class HeaderComponent implements OnInit {
 
   @Input() currentUnitSystem: string = "";
-  @Input() changeUnit: EventEmitter<string> = new EventEmitter();
+  @Output() changeUnit: EventEmitter<string> = new EventEmitter();
 
   isUnitSwitcherChecked = false;
 

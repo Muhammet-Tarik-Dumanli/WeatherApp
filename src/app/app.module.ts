@@ -14,6 +14,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { WeatherComponent } from './weather/weather.component';
 import { ForecastItemComponent } from './forecast/forecast-item.component'; 
+import { FormsModule } from '@angular/forms';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ForecastItemComponent } from './forecast/forecast-item.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    UiSwitchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

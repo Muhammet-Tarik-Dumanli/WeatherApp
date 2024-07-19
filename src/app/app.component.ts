@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { AppService } from './shared/services/app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'WeatherApp';
+export class AppComponent implements OnInit{
+  unitSystem: string = 'WeatherApp';
+
+  constructor(private appService: AppService) { }
+
+  ngOnInit() {
+    this.unitSystem = this.appService.getUnitSystem();
+  }
+
+  changeUnit(unitSystem: string) {
+    this.appService.updateUnitSystem(unitSystem);
+  }
 }
