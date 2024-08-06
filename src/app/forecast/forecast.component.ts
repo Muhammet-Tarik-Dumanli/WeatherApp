@@ -11,15 +11,15 @@ import { Forecast } from './forecast';
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
-  styleUrl: './forecast.component.scss',
+  styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent implements OnChanges, OnDestroy {
   @Input() cityName: string = '';
   @Input() measureOfTemp: string = '';
 
   private subscribers: any = {};
-  firstWeekForecast: any; //Forecast[]
-  secondWeekForecast: any; //Forecast[]
+  firstWeekForecast: Forecast[] = [];
+  secondWeekForecast: Forecast[] = []; // Burada tipi açıkça belirtiyoruz
   isSecondWeekForecastListShow: boolean = false;
   forecastDays: number = 0;
 
@@ -33,7 +33,7 @@ export class ForecastComponent implements OnChanges, OnDestroy {
     this.subscribers.forecast = this.forecastService
       .getForecastByCity(this.cityName)
       .subscribe((forecast) => {
-        const forecastData = forecast.map((forecastByDay: any) =>
+        const forecastData: Forecast[] = forecast.map((forecastByDay: any) =>
           this.forecastService.handleResponseForecastData(forecastByDay)
         );
 
@@ -50,15 +50,13 @@ export class ForecastComponent implements OnChanges, OnDestroy {
   }
 
   private recalculateForecastDays(): void {
-    const firstWeekForecastLength = this.firstWeekForecast.length;
-    const secondWeekForecastLength = this.secondWeekForecast.length;
-
-    this.forecastDays = !this.isSecondWeekForecastListShow
-      ? firstWeekForecastLength
-      : firstWeekForecastLength + secondWeekForecastLength;
+    this.forecastDays = this.firstWeekForecast.length + 
+                         (this.isSecondWeekForecastListShow ? this.secondWeekForecast.length : 0);
   }
 
   ngOnDestroy(): void {
-    this.subscribers.forecast.unsubscribe();
+    if (this.subscribers.forecast) {
+      this.subscribers.forecast.unsubscribe();
+    }
   }
 }

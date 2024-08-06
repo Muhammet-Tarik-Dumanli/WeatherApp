@@ -1,8 +1,20 @@
 @import '../../styles/variables.scss';
 
 .forecast-item {
+  // Genel ayarlar
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 
+  // Sky state icon
   &__sky-state {
+    display: flex;
+    align-items: center;
+
     .wi {
       display: inline-block;
       font-size: 1.8em;
@@ -10,12 +22,12 @@
     }
   }
 
+  // Temperature
   &__temperature {
     display: block;
     width: 98%;
     font-size: .9em;
     padding: .3em 0 .1em 0;
-    vertical-align: middle;
     margin: 0 auto;
 
     &-data {
@@ -23,45 +35,44 @@
       position: relative;
       left: -6px;
 
-      &:before,
-      &::after {
-        display: block;
-        position: absolute;
-      }
-
       &::before {
         content: attr(data-deg);
-        top: 0;
-        right: -5px;
         font-weight: 300;
         font-size: 90%;
+        position: absolute;
+        top: 0;
+        right: -5px;
       }
 
       &::after {
         content: attr(data-unit);
+        position: absolute;
         bottom: 0;
         right: -13px;
       }
     }
 
+    // Night temperature
     &--night {
       background: rgba(0, 0, 0, 0.03);
     }
   }
 
+  // Natural phenomenon
   &__natural-phenomen {
     padding: .3em 0 .1em 0;
   }
 
-
+  // Responsive styles
   @media screen and (max-width: 31.25em) {
     &__date {
       font-weight: 700;
     }
 
     &__sky-state {
-      font-size: 130%;
+      .wi {
+        font-size: 130%;
+      }
     }
   }
 }
-

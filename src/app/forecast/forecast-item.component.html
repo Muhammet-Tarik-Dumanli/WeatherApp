@@ -1,6 +1,6 @@
 <li class="forecast-item">
   <div class="forecast-item__date" *ngIf="currentDay">
-    <strong>Today</strong>
+    <strong>{{ getFormattedDate() }}</strong>
   </div>
   <div class="forecast-item__date" *ngIf="!currentDay">{{date | date: 'EEE dd MMM'}}</div>
   <div class="forecast-item__sky-state">
