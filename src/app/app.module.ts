@@ -26,6 +26,7 @@ import { WeatherIconsService } from './shared/services/weather-icons/weather-ico
 import { ClockService } from './clock/clock.service';
 import { DateService } from './date/date.service';
 import { ForecastService } from './forecast/forecast.service';
+import { CityCardResolverService } from './city-card/city-card-resolver.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { ForecastService } from './forecast/forecast.service';
     UiSwitchModule,
     HttpClientModule
   ],
-  providers: [AppService, LocalstorageService, LoaderService, WeatherService, HelperService, WeatherIconsService, HttpClient, ClockService, DateService, ForecastService],
+  providers: [AppService, LocalstorageService, LoaderService, WeatherService, HelperService, WeatherIconsService, HttpClient, ClockService, DateService, ForecastService, CityCardResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

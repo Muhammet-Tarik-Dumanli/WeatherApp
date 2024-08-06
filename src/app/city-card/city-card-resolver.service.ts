@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 
 import { WeatherService } from '../weather/weather.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CityCardResolverService implements Resolve<any> {
 
   constructor(
