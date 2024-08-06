@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.scss'
+  styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
   searchText = '';
@@ -15,11 +15,12 @@ export class SearchBarComponent {
     this.searchText = '';
   }
 
-  onKeyPress(e: any) {
-    if(e.keyCode === 13 && e.target.value) {
-      const city = e.target.value;
-
-      this.router.navigate([`/$[city]`]);
+  onKeyPress(e: KeyboardEvent) {
+    // Event tipini netleştirin
+    const input = e.target as HTMLInputElement;
+    if (e.key === 'Enter' && input.value.trim()) {
+      const city = input.value.trim(); // Trim, boşlukları temizler
+      this.router.navigate([`/${city}`]);
       this.searchText = '';
     }
   }

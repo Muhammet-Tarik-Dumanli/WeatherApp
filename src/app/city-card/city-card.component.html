@@ -3,18 +3,18 @@
   <div class="city-card__box">
     <div class="city-card__updated-label">
       last update at:
-      <span>{{weather.updateAt | date: 'HH:mm:ss'}}</span>
+      <span>{{ weather?.updateAt | date: 'HH:mm:ss' }}</span> <!-- Güvenli erişim -->
     </div>
     <div class="city-card__sky-icon">
-      <span [attr.class]="weather.iconClassname"></span>
+      <span [attr.class]="weather?.iconClassname"></span> <!-- Güvenli erişim -->
     </div>
     <div class="city-card__temperature">
-      <span data-deg="°" [attr.data-unit]="measureOfTemp">{{ weather.temp }}</span>
+      <span data-deg="°" [attr.data-unit]="measureOfTemp">{{ weather?.temp }}</span> <!-- Güvenli erişim -->
     </div>
-    <div class="city-card__city-name" title="{{ weather.city }}">
-      {{ weather.city }}
+    <div class="city-card__city-name" title="Washington">
+      {{ weather?.city }} <!-- Güvenli erişim -->
       <div class="city-card__sky-state city-card__sky-state--city-name">
-        {{ weather.description }}
+        {{ weather?.description }} <!-- Güvenli erişim -->
       </div>
     </div>
     <div class="city-card__date-time">
@@ -30,35 +30,36 @@
       <div class="city-card__info-list">
         <div class="city-card__info-list-item">
           <strong>Wind:</strong>
-          <span *ngIf="weather.windDirection">{{ weather.windDirection | lowercase }},</span>
-          {{ weather.windBeaufortScale | lowercase }}
+          <span *ngIf="weather?.windDirection">{{ weather.windDirection | lowercase }},</span> <!-- Güvenli erişim -->
+          {{ weather?.windBeaufortScale | lowercase }} <!-- Güvenli erişim -->
         </div>
         <div class="city-card__info-list-item">
-          <strong>Wind speed:</strong> {{ weather.windSpeed }} {{ measureOfWindSpeed }}
+          <strong>Wind speed:</strong> {{ weather?.windSpeed }} {{ measureOfWindSpeed }} <!-- Güvenli erişim -->
         </div>
         <div class="city-card__info-list-item">
           <strong>Humidity:</strong>
-          <span *ngIf="weather.humidity">{{ weather.humidity }}%</span>
+          <span *ngIf="weather?.humidity">{{ weather.humidity }}%</span> <!-- Güvenli erişim -->
         </div>
         <div class="city-card__info-list-item">
-          <strong>Pressure:</strong> {{ weather.pressure }} {{ measureOfPressure }}
+          <strong>Pressure:</strong> {{ weather?.pressure }} {{ measureOfPressure }} <!-- Güvenli erişim -->
         </div>
       </div>
       <div class="city-card__info-list">
         <div class="city-card__info-list-item">
-          <strong>Cloudiness:</strong> {{ weather.description }}
+          <strong>Cloudiness:</strong> {{ weather?.description }} <!-- Güvenli erişim -->
         </div>
         <div class="city-card__info-list-item">
-          <strong>Sunrise:</strong> {{ weather.sunrise | date: 'HH:mm' }}
+          <strong>Sunrise:</strong> {{ weather?.sunrise | date: 'HH:mm' }} <!-- Güvenli erişim -->
         </div>
         <div class="city-card__info-list-item">
-          <strong>Sunset:</strong> {{ weather.sunset | date: 'HH:mm' }}
+          <strong>Sunset:</strong> {{ weather?.sunset | date: 'HH:mm' }} <!-- Güvenli erişim -->
         </div>
       </div>
     </div>
     <div class="divider"></div>
     <div class="city-card__forecasts">
-      <app-forecast [measureOfTemp]="measureOfTemp" [cityName]="weather.city"></app-forecast>
+      <app-forecast [measureOfTemp]="measureOfTemp" [cityName]="weather?.city">
+      </app-forecast>
     </div>
   </div>
 </div>

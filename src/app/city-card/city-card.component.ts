@@ -1,15 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import { Weather } from '../weather/weather';
 import { apiConfig } from '../config';
 
 @Component({
   selector: 'app-city-card',
   templateUrl: './city-card.component.html',
-  styleUrl: './city-card.component.scss',
+  styleUrls: ['./city-card.component.scss'] // styleUrls, styleUrl değil
 })
 export class CityCardComponent implements OnInit {
-  @Input() weather: any; //Weather
+  @Input() weather: any = {}; // Varsayılan boş bir nesne
   @Input() unitSystem: 'metric' | 'imperial' = 'metric';
 
   measureOfTemp: string = '';
