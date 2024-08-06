@@ -7,7 +7,7 @@ import { AppService } from './shared/services/app.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
-  unitSystem: string = 'WeatherApp';
+  unitSystem: string = '';
 
   constructor(private appService: AppService) { }
 

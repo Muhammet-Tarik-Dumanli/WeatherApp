@@ -30,13 +30,10 @@ export class ForecastService {
     return interval(this.forecastUpdateInterval).pipe(
       startWith(0),
       switchMap(() =>
-        this.http.get<any>(
-          `${apiConfig.host}/forecast/daily?q=${city}&appid=${apiConfig.appId}&units=${this.unitSystem}&cnt=${apiConfig.amountForecastDays}`
-        )
+        this.http.get<any>(`${apiConfig.host}/forecast/daily?q=${city}&appid=${apiConfig.appId}&units=${this.unitSystem}&cnt=${apiConfig.amountForecastDays}`)
       ),
-      map((response: Response) => response.json()),
-      map((data: any) => data.list),
-      catchError(this.handleError)
+      map(data => data.list), // JSON'a çevirme işlemi burada otomatik olarak yapılır
+      catchError(error => throwError(() => new Error(error.message || 'Server error')))
     );
   }
 

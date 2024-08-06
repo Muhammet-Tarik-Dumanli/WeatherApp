@@ -278,7 +278,7 @@
   html [type="button"], /* 1 */
   [type="reset"],
   [type="submit"] {
-    -webkit-appearance: button; /* 2 */
+    appearance: button; /* 2 */
   }
   
   /**
@@ -372,7 +372,7 @@
    */
   
   [type="search"] {
-    -webkit-appearance: textfield; /* 1 */
+    appearance: textfield; /* 1 */
     outline-offset: -2px; /* 2 */
   }
   

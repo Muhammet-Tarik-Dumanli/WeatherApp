@@ -14,10 +14,10 @@
   * Mixins
   */
   @mixin transition ($transition) {
-     -webkit-transition: all $transition;
-     -moz-transition:    all $transition;
-     -ms-transition:     all $transition;
-     -o-transition:      all $transition;
+   -webkit-transition: all $transition;
+   -moz-transition:    all $transition;
+   -ms-transition:     all $transition;
+   -o-transition:      all $transition;
  }
  
  @mixin clear-fix {

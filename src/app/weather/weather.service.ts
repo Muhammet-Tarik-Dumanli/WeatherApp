@@ -127,6 +127,7 @@ export class WeatherService {
           `${apiConfig.host}/weather?appid=${apiConfig.appId}&q=${city}&units=${this.unitSystem}`
         )
       ),
+      map((response: any) => response),
       map((data: any) => {
         const weather = this.handleResponseWeatherData(data);
         this.weather.next(weather);

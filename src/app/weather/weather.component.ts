@@ -30,8 +30,8 @@ export class WeatherComponent implements OnInit, OnDestroy{
     }
    );
    
-   this._weatherSubscription = this.weatherService.getWeather().subscribe(weather => {
-    this.weather = weather;
+   this._weatherSubscription = this.weatherService.getWeather().subscribe((data: Weather) => {
+    this.weather = data;
    });
   }
 
